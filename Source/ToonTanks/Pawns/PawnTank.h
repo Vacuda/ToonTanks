@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Vacuda 2020
 
 #pragma once
 
@@ -22,6 +22,23 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCameraComponent* Camera;
 
+	FVector MoveDirection;
+	FQuat TurnDirection;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	float MoveSpeed = 100.f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement", meta = (AllowPrivateAccess = "true"))
+	float TurnSpeed = 100.f;
+
+	APlayerController* PlayerControllerRef;
+
+	void CalculateMoveInput(float Value);
+	void CalculateTurnInput(float Value);
+
+	void Move();
+	void Turn();
+
 public:
 
 	APawnTank();
@@ -30,5 +47,5 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-	
+	virtual void HandleDestruction() override;
 };

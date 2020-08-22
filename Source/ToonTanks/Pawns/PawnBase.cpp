@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Vacuda 2020
 
 
 #include "PawnBase.h"
@@ -24,5 +24,33 @@ APawnBase::APawnBase()
 }
 
 
+void APawnBase::RotateTurret(FVector Target)
+{
 
+
+	//get StartLocation of Turret Component
+	FVector StartLocation = TurretMesh->GetComponentLocation();
+
+	//set to X and Y of Target.  Keep Z of Turret
+	FVector TargetLocation = FVector(Target.X, Target.Y, StartLocation.Z);
+
+	//get new rotation, target - start
+	FRotator TurretRotation = FVector(TargetLocation - StartLocation).Rotation();
+
+	TurretMesh->SetWorldRotation(TurretRotation);
+
+
+
+
+}
+
+void APawnBase::Fire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Fire Fire Fire"));
+}
+
+void APawnBase::HandleDestruction()
+{
+
+}
 

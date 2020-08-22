@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright Vacuda 2020
 
 #pragma once
 
@@ -13,7 +13,7 @@ class TOONTANKS_API APawnBase : public APawn
 {
 	GENERATED_BODY()
 
-private:
+protected:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	UCapsuleComponent* Capsule;
@@ -30,6 +30,11 @@ private:
 public:
 	APawnBase();
 
+protected:
+	void RotateTurret(FVector Target);
 
+	void Fire();
+
+	virtual void HandleDestruction();
 
 };
