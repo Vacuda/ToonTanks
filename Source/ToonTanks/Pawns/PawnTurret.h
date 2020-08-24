@@ -15,7 +15,6 @@ class TOONTANKS_API APawnTurret : public APawnBase
 
 private:
 
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Combat", meta = (AllowPrivateAccess = "true"))
 	float FireRate = 2.f;
 
@@ -32,7 +31,6 @@ private:
 	float ReturnDistanceToPlayer();
 	void PatrolBehavior();
 
-
 public:
 
 	APawnTurret();
@@ -40,7 +38,7 @@ public:
 
 protected:
 	virtual void BeginPlay() override;
-
+	
 	virtual void HandleDestruction() override;
 
 };

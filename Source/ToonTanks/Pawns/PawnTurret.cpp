@@ -16,8 +16,10 @@ void APawnTurret::BeginPlay()
 {
 	Super::BeginPlay();
 	
+    //setup fire rate time handler
     GetWorld()->GetTimerManager().SetTimer(FireRateTimerHandle, this, &APawnTurret::CheckFireCondition,  FireRate, true);
 
+    //setup Playerpawn
     PlayerPawn = Cast<APawnTank>(UGameplayStatics::GetPlayerPawn(this, 0));
 }
 
@@ -36,13 +38,10 @@ void APawnTurret::Tick(float DeltaTime)
     else{
         PatrolBehavior();
     }
-
-
 }
 
 void APawnTurret::CheckFireCondition()
 {
-
     // safety check
     if(!PlayerPawn){
         return;
@@ -61,7 +60,6 @@ float APawnTurret::ReturnDistanceToPlayer()
     }
 
     return FVector::Dist(PlayerPawn->GetActorLocation(), GetActorLocation());
-
 }
 
 void APawnTurret::PatrolBehavior()
